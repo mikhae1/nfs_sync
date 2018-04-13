@@ -1,0 +1,3 @@
+SRC_PATH='/var/nfsshare'
+DST_HOST='rsync@srv'
+DST_PATH='/var/nfsshare'

@@ -1,3 +1,0 @@
-*/10   *  *   *   *   root  { cd /opt/nfs_sync && ./check_cluster.sh && ./nfs_sync.sh; } >> /var/log/nfs_sync/nfs_sync.log 2>&1
-53   23   *  *   sun   root  { cd /opt/nfs_sync && ./check_cluster.sh && ./nfs_clean.sh; } >> /var/log/nfs_sync/nfs_clean.log 2>&1
-
