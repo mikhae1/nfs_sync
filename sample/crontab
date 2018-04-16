@@ -1,3 +1,3 @@
-5  */1  *   *   *   root  { cd /opt/nfs_sync && ./nfs_check.sh && DIR=mydir ./nfs_sync.sh; } > /var/log/nfs_sync/nfs_sync_mydir.log 2>&1
+5  */1  *   *   *   root  DIR=mydir; { cd /opt/nfs_sync && ./nfs_check.sh && ./nfs_sync.sh; } > /var/log/nfs_sync/nfs_sync_$DIR.log 2>&1
 
-#0   23   *  *   sat   root  { cd /opt/nfs_sync && ./nfs_check.sh && DIR=mydir ./nfs_fullsync.sh; } > /var/log/nfs_sync/nfs_fullsync_mydir.log 2>&1
+#0   23   *  *   sat   root  DIR=mydir; { cd /opt/nfs_sync && ./nfs_check.sh && ./nfs_fullsync.sh; } > /var/log/nfs_sync/nfs_fullsync_$DIR.log 2>&1
