@@ -1,3 +1,16 @@
-5  */1  *   *   *   root  DIR=mydir; { cd /opt/nfs_sync && ./nfs_check.sh && ./nfs_sync.sh; } > /var/log/nfs_sync/nfs_sync_$DIR.log 2>&1
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
 
-#0   23   *  *   sat   root  DIR=mydir; { cd /opt/nfs_sync && ./nfs_check.sh && ./nfs_fullsync.sh; } > /var/log/nfs_sync/nfs_fullsync_$DIR.log 2>&1
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+05  */1  *   *   *   root  DIR=mydir; { cd /opt/nfs_sync && ./nfs_check.sh && ./nfs_sync.sh; } &> /var/log/nfs_sync/nfs_sync_$DIR.log
+
+15  *  *   *   *   root  { cd /opt/nfs_sync && ./nfs_check.sh && DIR=app-uploads ./nfs_sync.sh; } &> /var/log/cluster/nfs_sync_app-uploads.log
+20  *  *   *   *   root  { cd /opt/nfs_sync && ./nfs_check.sh && DIR=app-tmp ./nfs_sync.sh; } &> /var/log/cluster/nfs_sync_app-tmp.log
